@@ -1,5 +1,6 @@
 package common;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.AfterMethod;
@@ -26,8 +27,29 @@ public class CommonAPI {
     @AfterMethod
     public void cleanup() {
         driver.close();
+    }
 
+    public void clickOnElement(String locator) {
+    try {
+        driver.findElement(By.cssSelector(locator)).click();
+    }catch (Exception ex) {
+    try {
+        driver.findElement(By.className(locator)).click();
+    }catch(Exception ex2) {
+    try {
+        driver.findElement(By.id(locator)).click();
+
+    }catch(Exception ex3) {
+    try {
+        driver.findElement(By.xpath(locator)).click();
+
+    }catch(Exception ex4) {
 
     }
 
-}
+    }
+    }
+    }
+    }
+
+    }
